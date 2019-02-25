@@ -1,6 +1,6 @@
 # ducks-to-db
 Node.js application to store Papa Duck events in a Postgres database.
-## Pre-requisites
+## Prerequisites
 1. [Node.js and npm](https://nodejs.org/en/download/)
 
 ## Running
