@@ -1,6 +1,11 @@
 const io = require('socket.io-client');
-const port = process.env.PORT || 3000
-const socket = io('http://localhost:'+port);
+
+// Local
+//const socket_host = 'http://localhost:3000'
+
+// IBM Cloud
+const socket_host = 'http://ducks-to-db.mybluemix.net'
+const socket = io(socket_host);
 
 socket.on('connect', function(){
   console.log('socket connected')

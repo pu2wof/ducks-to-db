@@ -40,7 +40,7 @@ pg.setup().then(db => {
 // Run socket.io server
 let port = process.env.PORT || 3000
 server.listen(port, function() {
-  console.log('socket.io server listening on port: '+3000)
+  console.log('socket.io server listening on port: '+port)
 });
 
 module.exports = io

@@ -1,0 +1,4 @@
+applications:
+- name: ducks-to-db
+  host: ducks-to-db
+  memory: 128M

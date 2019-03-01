@@ -11,6 +11,7 @@
   "author": "Dan Cunnington <DanCunnington@uk.ibm.com>",
   "license": "ISC",
   "dependencies": {
+    "cfenv": "^1.2.0",
     "dotenv": "^6.2.0",
     "ibmiotf": "^0.2.41",
     "jsonwebtoken": "^8.5.0",
