@@ -1,5 +1,5 @@
 # ducks-to-db
-[![Build Status](https://travis-ci.org/Project-Owl/ducks-to-db.svg?branch=master)](https://travis-ci.org/Project-Owl/ducks-to-db)
+[![Build Status](https://travis-ci.org/Project-Owl/ducks-to-db.svg?branch=master)](https://travis-ci.org/Project-Owl/ducks-to-db)  
 Node.js application to store Papa Duck events in a Postgres database.
 ## Prerequisites
 1. [Node.js and npm](https://nodejs.org/en/download/)
