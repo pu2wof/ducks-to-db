@@ -12,7 +12,7 @@ deploy:
   provider: script
   script: ./deploy.sh
   on:
-    repo: project-owl/ducks-to-db
+    repo: Project-Owl/ducks-to-db
     branch: master
   skip_cleanup: true
 
