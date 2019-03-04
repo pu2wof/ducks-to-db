@@ -16,7 +16,7 @@ const cert_ascii = cert_buffer.toString('ascii');
 fs.writeFileSync("./pgroot.crt", cert_ascii)
 
 // Watson IoT device type to subscribe too
-const DEVICE_TYPE = process.env.WIOT_DEVICE_TYPE
+const device_types = process.env.WIOT_DEVICE_TYPES.split(',')
 
 let error_handle = (err) => {
   console.log(err)
@@ -31,7 +31,9 @@ pg.setup().then(db => {
   wiot.setup().then(ducks => {
     console.log('listening for device events...')
 
-    ducks.subscribeToDeviceEvents(DEVICE_TYPE)
+    device_types.forEach(dt => {
+      ducks.subscribeToDeviceEvents(dt)
+    })
     ducks.on("deviceEvent", insertWrapper);
 
   }, error_handle)
