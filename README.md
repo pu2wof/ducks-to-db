@@ -1,6 +1,6 @@
 # ducks-to-db
 [![Build Status](https://travis-ci.org/Project-Owl/ducks-to-db.svg?branch=master)](https://travis-ci.org/Project-Owl/ducks-to-db)  
-Node.js application to store Papa Duck events in a Postgres database.
+Node.js application to manage Papa Ducks and store Papa Duck events in a Postgres database
 ## Prerequisites
 1. [Node.js and npm](https://nodejs.org/en/download/)
 
@@ -24,5 +24,8 @@ npm install
 npm start
 ```
 
+### Events
 Publishing device events to the IBM Watson IoT platform for the device type specified in the `WIOT_DEVICE_TYPE` environment variable will result in a SQL INSERT query into the `clusterdata` table.
 
+### Duck Management
+Please refer to the [API](docs/api.md) documentation.

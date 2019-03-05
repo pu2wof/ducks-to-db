@@ -13,9 +13,12 @@
   "dependencies": {
     "cfenv": "^1.2.0",
     "dotenv": "^6.2.0",
+    "express": "^4.16.4",
     "ibmiotf": "^0.2.41",
     "jsonwebtoken": "^8.5.0",
     "pg-promise": "^8.5.6",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
