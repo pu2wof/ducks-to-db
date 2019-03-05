@@ -9,6 +9,8 @@ const socket = io(socket_host);
 
 socket.on('connect', function(){
   console.log('socket connected')
+  
+  // subscribe to events
   socket.on('civilian', function(data){
     console.log(data)
   });

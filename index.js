@@ -4,7 +4,8 @@ require('dotenv').config()
 
 const pg = require('./lib/pg.js');
 const wiot = require('./lib/watson_iot.js');
-const server = require('http').createServer();
+const app = require('express')();
+const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 // Watson IoT device type to subscribe too
@@ -31,10 +32,13 @@ pg.setup().then(db => {
   }, error_handle)
 }, error_handle)
 
-// Run socket.io server
+// Load API routes
+require('./api/routes.js')(app)
+
+// Run server
 let port = process.env.PORT || 3000
 server.listen(port, function() {
-  console.log('socket.io server listening on port: '+port)
+  console.log('express + socket.io server listening on port: '+port)
 });
 
 module.exports = io
