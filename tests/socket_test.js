@@ -9,10 +9,17 @@ const socket = io(socket_host);
 
 socket.on('connect', function(){
   console.log('socket connected')
+
+  // Subscribe to events
+  socket.on('androidDebug', function(data){
+    console.log(data)
+  });
+
+  socket.on('papa-duck', function(data){
+    console.log(data)
+  });
 });
-socket.on('androidDebug', function(data){
-  console.log(data)
-});
+
 socket.on('disconnect', function(){
   console.log('disconnected')
 });
