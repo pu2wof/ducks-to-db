@@ -3,7 +3,7 @@ The API enables the management of duck devices, communicating with both the IBM 
 
 ## Contents
 1. [Create a Device](#create-a-device)
-2. [Generate a papa-duck .ino file for a device](#generate-a-papa-duck-.ino-file-for-a-device)
+2. [Generate an Arduino File](#generate-an-arduino-file)
 3. [Get Device Types](#get-device-types)
 4. [Get Device Details](#get-device-details)
 5. [Delete a Device](#delete-a-device)
@@ -28,8 +28,8 @@ Example Response:
 }
 ```
 
-## Generate a papa-duck .ino file for a device
-This generates a *.ino* file with device credentials in place, ready for deployment to an ardunio. This uses the latest code from the [github repository](https://github.com/Project-Owl/duck/blob/master/ClusterDuck/papa.ino).
+## Generate an Arduino File
+This generates a `papa-duck` *.ino* file with device credentials in place, ready for deployment to an ardunio. This uses the latest code from the [github repository](https://github.com/Project-Owl/duck/blob/master/ClusterDuck/papa.ino).
 
 **HTTP GET** `/api/devices/file` with the following URL query parameters:
 * `type`: The device type to be used (e.g. 'papa-duck')
