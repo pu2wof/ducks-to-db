@@ -1,10 +1,10 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let router = express.Router();
-let wiot = require('../../lib/watson_iot.js')
-let pg = require('../../lib/pg.js')
-let device_utils = require('./utils.js')
-let error_msgs = require('../errors.js')
+let wiot = require('../../lib/watson_iot.js');
+let pg = require('../../lib/pg.js');
+let device_utils = require('./utils.js');
+let error_msgs = require('../errors.js');
 
 router.use(bodyParser.json());
 
@@ -34,13 +34,13 @@ router.delete('/', (req, res) => {
 
 // Create a device
 router.post('/', (req, res, next) => {
-  let device = {
-    "type": req.query.type,
-    "id": req.query.id
-  }
-  if (!device.type || !device.id) {
+  if (!req.body || !req.body.type || !req.body.id) {
     res.status(400)
     return res.json({"err": error_msgs.no_device_type_and_id})
+  }
+  let device = {
+    "type": req.body.type,
+    "id": req.body.id
   }
   let handle_err = (err) => {
     res.status(500)

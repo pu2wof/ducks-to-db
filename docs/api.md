@@ -11,9 +11,11 @@ The API enables the management of duck devices, communicating with both the IBM 
 ## Create a Device
 Create a new device in the IBM Watson IoT Platform, store the device in the Postgres database and receieve the device credentials. A *.ino* file string is also returned, containing papa-duck arduino code with the credentials in place. Note. This pulls the latest code from the [github repository](https://github.com/Project-Owl/duck/blob/master/ClusterDuck/papa.ino) to perform the replace. If the device type does not exist, it is created and if the device already exists, the existing credentials are returned.  
 
-**HTTP POST** `/api/devices` with the following URL query parameters:
+**HTTP POST** `/api/devices` with the following body parameters:
 * `type`: The device type to be used (e.g. 'papa-duck')
 * `id`: The unique identifier of the device (e.g. a MAC address)
+
+This request requires the `Content-Type: application/json` header.
 
 Example Response:
 ```
