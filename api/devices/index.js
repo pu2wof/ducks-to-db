@@ -79,10 +79,13 @@ router.post('/', (req, res, next) => {
           if (err.status === 409 && err.data && err.data.exception &&
             err.data.exception.id && err.data.exception.id === 'CUDRS0020E') {
             pg.getDevice(device.type, device.id).then(existing => {
+              let gen_file_obj = {
+                "typeId": existing.device_type,
+                "deviceId": existing.device_id,
+                "authToken": existing.auth_token
+              }
               // Generate file
-              device_utils.generate_file(existing).then(file => {
-                delete existing["id"]
-        
+              device_utils.generate_file(gen_file_obj).then(file => {
                 let obj = {
                   "file":file, 
                   "credentials": {
