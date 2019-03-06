@@ -79,9 +79,22 @@ router.post('/', (req, res, next) => {
           if (err.status === 409 && err.data && err.data.exception &&
             err.data.exception.id && err.data.exception.id === 'CUDRS0020E') {
             pg.getDevice(device.type, device.id).then(existing => {
-              existing["organization"] = process.env.WIOT_ORG,
-              delete existing["id"]
-              res.json(existing)
+              // Generate file
+              device_utils.generate_file(existing).then(file => {
+                delete existing["id"]
+        
+                let obj = {
+                  "file":file, 
+                  "credentials": {
+                    "organization": process.env.WIOT_ORG,
+                    "type": existing.device_type,
+                    "id": existing.device_id,
+                    "token": existing.auth_token
+                  }
+                }
+                res.json(obj)
+              }, handle_err)
+
             }, handle_err)
           } else {
             res.status(err.status)
