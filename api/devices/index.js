@@ -79,6 +79,7 @@ router.post('/', (req, res, next) => {
           if (err.status === 409 && err.data && err.data.exception &&
             err.data.exception.id && err.data.exception.id === 'CUDRS0020E') {
             pg.getDevice(device.type, device.id).then(existing => {
+              existing["organization"] = process.env.WIOT_ORG,
               delete existing["id"]
               res.json(existing)
             }, handle_err)
