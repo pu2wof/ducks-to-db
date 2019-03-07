@@ -153,4 +153,16 @@ router.get('/file', (req, res) => {
   })
 });
 
+// Check if messages exist in the database
+router.post('/message_status', (req, res, next) => {
+  let ids = req.body.message_ids
+
+  pg.checkMessages(ids).then(status => {
+    res.json(status)
+  }, err => {
+    res.status(500)
+    res.json(err)
+  })
+})
+
 module.exports = router;
