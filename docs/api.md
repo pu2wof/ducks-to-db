@@ -153,8 +153,8 @@ Using a smartphone, observe the location of a device. The smartphone's GPS locat
 ```
 {
   "timestamp": <The timestamp of the device observation, (e.g. '2019-04-12 14:34')>,
-  "device_type": <The device type to be used (e.g. 'papa-duck')>, 
-  "device_id": <The device ID to be used (e.g. 'duck-1')>, 
+  "deviceType": <The device type to be used (e.g. 'papa-duck')>, 
+  "deviceID": <The device ID to be used (e.g. 'duck-1')>, 
   "latitude": <The latitude of the observation>, 
   "longitude": <The longitude of the observation>
 }
@@ -171,8 +171,8 @@ Example Response:
 Retrieve the latest observation of a device. 
 **HTTP GET** `/api/devices/latest_observation` with the following URL query parameters:
 
-* `device_type`: The device type to be used (e.g. 'papa-duck')
-* `device_id`: The device ID to be used (e.g. a MAC address)
+* `deviceType`: The device type to be used (e.g. 'papa-duck')
+* `deviceID`: The device ID to be used (e.g. a MAC address)
 
 Example Response:
 
@@ -190,8 +190,8 @@ Example Response:
 Retrieve all the observations of a device.
 **HTTP GET** `/api/devices/trace_observations` with the following URL query parameters:
 
-* `device_type`: The device type to be used (e.g. 'papa-duck')
-* `device_id`: The device ID to be used (e.g. a MAC address)
+* `deviceType`: The device type to be used (e.g. 'papa-duck')
+* `deviceID`: The device ID to be used (e.g. a MAC address)
 
 Example Response:
 ```

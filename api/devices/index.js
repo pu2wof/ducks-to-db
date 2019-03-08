@@ -160,6 +160,7 @@ router.post('/observation', (req, res, next) => {
   pg.insertObservation(req.body).then(_ => {
     res.json({"ok": true})
   }, err_obj => {
+    console.log(err_obj)
     res.status(err_obj.status)
     return res.json({"err": err_obj.err})
   })
