@@ -7,8 +7,7 @@ let device_utils = require('./utils.js');
 let error_msgs = require('../errors.js');
 
 router.use(bodyParser.json());
-
-// Get all the device types and devices currently registered
+  
 router.get('/', wiot.get_device_types);
 router.get('/device', wiot.get_devices)
 router.post('/message_status', pg.checkMessages)
