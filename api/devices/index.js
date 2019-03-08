@@ -11,6 +11,10 @@ router.use(bodyParser.json());
 // Get all the device types and devices currently registered
 router.get('/', wiot.get_device_types);
 router.get('/device', wiot.get_devices)
+router.post('/message_status', pg.checkMessages)
+router.post('/observation', pg.insertObservation)
+router.get('/latest_observation', pg.getLatestObservation)
+
 router.delete('/', (req, res) => {
   let type = req.query.type
   let id = req.query.id
@@ -152,17 +156,5 @@ router.get('/file', (req, res) => {
     res.json(err)
   })
 });
-
-// Check if messages exist in the database
-router.post('/message_status', (req, res, next) => {
-  let ids = req.body.message_ids
-
-  pg.checkMessages(ids).then(status => {
-    res.json(status)
-  }, err => {
-    res.status(500)
-    res.json(err)
-  })
-})
 
 module.exports = router;

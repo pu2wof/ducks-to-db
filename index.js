@@ -23,7 +23,6 @@ let insertWrapper = (deviceType, deviceId, eventType, format, payload) => {
 pg.setup().then(db => {
   wiot.setup().then(ducks => {
     console.log('listening for device events...')
-
     device_types.forEach(dt => {
       ducks.subscribeToDeviceEvents(dt)
     })
