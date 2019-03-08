@@ -11,7 +11,6 @@ router.use(bodyParser.json());
 router.get('/', wiot.get_device_types);
 router.get('/device', wiot.get_devices)
 router.post('/message_status', pg.checkMessages)
-router.post('/observation', pg.insertObservation)
 router.get('/latest_observation', pg.getLatestObservation)
 router.get('/trace_observations', pg.traceObservations)
 
@@ -156,5 +155,14 @@ router.get('/file', (req, res) => {
     res.json(err)
   })
 });
+
+router.post('/observation', (req, res, next) => {
+  pg.insertObservation(req.body).then(_ => {
+    res.json({"ok": true})
+  }, err_obj => {
+    res.status(err_obj.status)
+    return res.json({"err": err_obj.err})
+  })
+})
 
 module.exports = router;

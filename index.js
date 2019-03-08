@@ -17,7 +17,24 @@ let error_handle = (err) => {
 }
 
 let insertWrapper = (deviceType, deviceId, eventType, format, payload) => {
-  pg.insertEvent(deviceType, deviceId, eventType, format, payload, io)
+  // Handle Duck Observation events differently
+  if (eventType === 'device-observation') {
+    let parsed_obs = ""
+    try {
+       parsed_obs = JSON.parse(payload);
+    } catch (err) {
+      console.log(err);
+    }
+    if (parsed_obs !== "") {
+      pg.insertObservation(parsed_obs).then(_ => {}, err => {
+        console.log(err)
+      });
+    } else {
+      console.log("error: observation could not be defined");
+    }
+  } else {
+    pg.insertEvent(deviceType, deviceId, eventType, format, payload, io)
+  }
 }
 
 pg.setup().then(db => {
