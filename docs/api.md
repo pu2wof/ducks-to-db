@@ -152,13 +152,11 @@ Using a smartphone, observe the location of a device. The smartphone's GPS locat
 **HTTP POST** `/api/devices/observation` with the following JSON body:
 ```
 {
-  "observation": {
-    "timestamp": <The timestamp of the device observation, (e.g. '2019-04-12 14:34')>,
-    "device_type": <The device type to be used (e.g. 'papa-duck')>, 
-    "device_id": <The device ID to be used (e.g. 'duck-1')>, 
-    "latitude": <The latitude of the observation>, 
-    "longitude": <The longitude of the observation>
-  }
+  "timestamp": <The timestamp of the device observation, (e.g. '2019-04-12 14:34')>,
+  "device_type": <The device type to be used (e.g. 'papa-duck')>, 
+  "device_id": <The device ID to be used (e.g. 'duck-1')>, 
+  "latitude": <The latitude of the observation>, 
+  "longitude": <The longitude of the observation>
 }
 ```
 
