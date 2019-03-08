@@ -14,6 +14,7 @@ router.get('/device', wiot.get_devices)
 router.post('/message_status', pg.checkMessages)
 router.post('/observation', pg.insertObservation)
 router.get('/latest_observation', pg.getLatestObservation)
+router.get('/trace_observations', pg.traceObservations)
 
 router.delete('/', (req, res) => {
   let type = req.query.type
