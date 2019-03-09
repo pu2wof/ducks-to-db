@@ -235,10 +235,8 @@ Example Response:
 
 ```
 {
-    "info": {
-      "name": "test1",
-      "description": "this is a land based test...."
-    },
+    
+    "name": "test1",    
     "results": [
         {
             "uuid": "d23eab2a",
