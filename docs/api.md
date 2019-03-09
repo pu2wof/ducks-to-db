@@ -229,12 +229,30 @@ Check if messages were received in the database via the ducklinks.
 }
 ```
 
-Example Response, where a 1 indicates this Message UUID was receieved, and a 0 indicates this message was not received.
+Example Response:
 
 ```
 {
-    "<Message UUID>": 1,
-    "<Message UUID 2>": 0
+    "results": [
+        {
+            "uuid": "d23eab2a",
+            "received": 1,
+            "path": ",843E8CBF713C,44E855A4AE30",
+            "received_at": "1552094293260"
+        },
+        {
+            "uuid": "071126b0",
+            "received": 1,
+            "path": ",843E8CBF713C,44E855A4AE30",
+            "received_at": "1552094582100"
+        },
+        {
+            "uuid": "dan",
+            "received": 0,
+            "path": [],
+            "received_at": ""
+        }
+    ]
 }
 ```
 
