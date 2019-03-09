@@ -12,16 +12,24 @@ socket.on('connect', function(){
 
   // subscribe to events
   socket.on('civilian', function(data){
-    console.log(data)
+    console.log('----- civilian: ', data)
+    console.log('')
   });
   socket.on('androidDebug', function(data){
-    console.log(data)
+    console.log('----- androidDebug: ', data)
+    console.log('')
   });
   socket.on('health', function(data){
-    console.log(data)
+    console.log('----- health: ',data)
+    console.log('')
   });
   socket.on('device-observation', function(data){
-    console.log(data)
+    console.log('----- device-observation: ', data)
+    console.log('')
+  });
+  socket.on('new-test-report', function(data){
+    console.log('----- new-test-report: ', data)
+    console.log('')
   });
 });
 

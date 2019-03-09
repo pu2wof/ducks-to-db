@@ -229,10 +229,16 @@ Check if messages were received in the database via the ducklinks.
 }
 ```
 
+When a new test report is created, this is emitted over the socket on `new-test-report`.
+
 Example Response:
 
 ```
 {
+    "info": {
+      "name": "test1",
+      "description": "this is a land based test...."
+    },
     "results": [
         {
             "uuid": "d23eab2a",

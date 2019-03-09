@@ -11,10 +11,13 @@ module.exports = (io) => {
     
   router.get('/', wiot.get_device_types);
   router.get('/device', wiot.get_devices)
-  router.post('/message_status', pg.checkMessages)
   router.get('/latest_observation', pg.getLatestObservation)
   router.get('/trace_observations', pg.traceObservations)
-
+  // Pass the Socket
+  let message_status_wrapper = (req, res, next) => {
+    pg.checkMessages(req, res, next, io)
+  }
+  router.post('/message_status', message_status_wrapper)
   router.delete('/', (req, res) => {
     let type = req.query.type
     let id = req.query.id
