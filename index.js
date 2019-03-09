@@ -1,12 +1,16 @@
 'use strict';
 
 require('dotenv').config()
-
+const path = require('path')
 const pg = require('./lib/pg.js');
 const wiot = require('./lib/watson_iot.js');
-let app = require('express')();
+const express = require('express');
+let app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+
+// Serve index.html on root
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Watson IoT device type to subscribe too
 const device_types = process.env.WIOT_DEVICE_TYPES.split(',')
