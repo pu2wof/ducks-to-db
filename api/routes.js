@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function (app, io) {
   'use strict';
 
   // Base route
@@ -8,5 +8,5 @@ module.exports = function (app) {
   })
 
   // Devices
-  app.use(base+'/devices', require('./devices'));
+  app.use(base+'/devices', require('./devices')(io));
 };

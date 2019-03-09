@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const pg = require('./lib/pg.js');
 const wiot = require('./lib/watson_iot.js');
-const app = require('express')();
+let app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
@@ -19,20 +19,10 @@ let error_handle = (err) => {
 let insertWrapper = (deviceType, deviceId, eventType, format, payload) => {
   // Handle Duck Observation events differently
   if (eventType === 'device-observation') {
-    let parsed_obs = ""
-    try {
-       parsed_obs = JSON.parse(payload);
-    } catch (err) {
-      console.log(err);
-    }
-    if (parsed_obs !== "") {
-      pg.insertObservation(parsed_obs).then(_ => {}, err => {
-        console.log(err)
-      });
-    } else {
-      console.log("error: observation could not be defined");
-    }
-  } else {
+    pg.insertObservation(eventType, payload.toString('utf-8'), io)
+  } else if (eventType === 'androidDebug') {
+    pg.insertAndroidDebugEvent(deviceType, deviceId, eventType, format, payload, io)
+  }else {
     pg.insertEvent(deviceType, deviceId, eventType, format, payload, io)
   }
 }
@@ -49,7 +39,7 @@ pg.setup().then(db => {
 }, error_handle)
 
 // Load API routes
-require('./api/routes.js')(app)
+require('./api/routes.js')(app,io)
 
 // Run server
 let port = process.env.PORT || 3000

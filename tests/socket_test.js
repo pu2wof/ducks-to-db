@@ -20,6 +20,9 @@ socket.on('connect', function(){
   socket.on('status', function(data){
     console.log(data)
   });
+  socket.on('device-observation', function(data){
+    console.log(data)
+  });
 });
 
 socket.on('disconnect', function(){
