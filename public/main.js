@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   let append_to_log = (event_str) => {
     $("#log").append(event_str+'<br>')
+    $('#log').scrollTop($('#log')[0].scrollHeight);
   }
   // IBM Cloud
   const socket_host = 'http://ducks-to-db.mybluemix.net'
@@ -12,20 +13,24 @@ $(document).ready(function() {
 
     // subscribe to events
     socket.on('civilian', function(data){
-      append_to_log('----- civilian: '+data)
+      let current_time = new Date()
+      append_to_log('----- '+ current_time+' | civilian: '+data)
     });
     socket.on('androidDebug', function(data){
-      append_to_log('----- androidDebug: '+data)
+      let current_time = new Date()
+      append_to_log('----- '+ current_time+' | androidDebug: '+data)
     });
     socket.on('health', function(data){
-      append_to_log('----- health: '+data)
+      let current_time = new Date()
+      append_to_log('----- '+ current_time+' | health: '+data)
     });
     socket.on('device-observation', function(data){
-      console.log(data)
-      append_to_log('----- device-observation: '+data)
+      let current_time = new Date()
+      append_to_log('----- '+ current_time+' | device-observation: '+data)
     });
     socket.on('new-test-report', function(data){
-      append_to_log('----- new-test-report: '+data)
+      let current_time = new Date()
+      append_to_log('----- '+ current_time+' | new-test-report: '+data)
     });
   });
 
