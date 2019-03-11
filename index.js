@@ -12,6 +12,11 @@ const io = require('socket.io')(server);
 // Serve index.html on root
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Portal
+app.get('/portal', function(req, res) {
+    res.sendFile('public/portal.html', {root: __dirname })
+})
+
 // Watson IoT device type to subscribe too
 const device_types = process.env.WIOT_DEVICE_TYPES.split(',')
 

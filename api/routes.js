@@ -7,7 +7,6 @@ module.exports = function (app, io) {
     res.json({"running": true})
   })
 
-
   // Devices
   app.use(base+'/devices', require('./devices')(io));
 };
