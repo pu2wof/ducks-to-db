@@ -8,27 +8,46 @@
 
   <script src="./jquery.min.js"></script> 
   <script src="./socket-io.js"></script>
+  <script src="./moment.min.js"></script>
   <script src="./main.js"></script>
 
   <style>
     html, body {
       width: 100%;
       height: 100%;
+      font-family: Arial;
     }
 
     #log {
       padding: 10px;
       width: calc(100% - 20px;);
+      overflow-y: scroll;
+      height: 100%;
     }
+
+    .time {
+      font-weight: bold;
+      color: #3e4144;
+    }
+
+    .container {
+      border-bottom: solid 2px rgba(0,0,0, 0.4);
+      margin-bottom: 10px;
+    }
+
+    p.event_str {padding: 5px; margin: 5px; }
+    .string { color: rgb(252,88,60); }
+    .number { color: rgb(252,88,60); }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: rgb(142,17,63); }
 
   </style>
     
 </head>
 <body>
-
-  <h1>Event Log</h1>
   <div id="log"> 
-
+    <h1>Event Log</h1>
   
   </div>
 
