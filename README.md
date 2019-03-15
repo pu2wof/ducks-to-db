@@ -25,7 +25,11 @@ npm start
 ```
 
 ### Events
-Publishing device events to the IBM Watson IoT platform for the device type specified in the `WIOT_DEVICE_TYPE` environment variable will result in a SQL INSERT query into the `clusterdata` table. Sample code to live stream events is provided in `tests/socket_test.js` - running this script will print events to the console in real-time.
+Publishing device events to the IBM Watson IoT platform for the device type specified in the `WIOT_DEVICE_TYPE` environment variable will result in a SQL INSERT query into the `clusterdata` table. Sample code to live stream events is provided in `tests/socket_test.js` - running this script will print events to the console in real-time:
+
+```
+node tests/socket_test.js
+```
 
 ### Duck Management
 Please refer to the [API](docs/api.md) documentation.
